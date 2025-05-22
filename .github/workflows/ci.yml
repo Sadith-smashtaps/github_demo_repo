@@ -24,5 +24,10 @@ jobs:
         if: ${{ env.platform == 'Azure' }}
         run: |
           echo "Platform is ${{ env.platform }}"
-          echo "The region is ${{ env.region }}"
+          echo "The region is $region"
+
+      - name: Display custom env vars
+        run: |
+          echo "Github Actor: $GITHUB_ACTOR"
+          echo "Github Ref: $GITHUB_REF"
         
