@@ -37,6 +37,8 @@ jobs:
   display:
     # Runs on the latest version of Ubuntu
     runs-on: ubuntu-latest
+    needs: build
+    # This job will run after the build job is completed
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
