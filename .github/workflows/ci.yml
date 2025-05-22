@@ -11,23 +11,27 @@ on:
   workflow_dispatch:
   
 jobs:
-  display:
+  build:
+    # Runs on the latest version of Ubuntu
     runs-on: ubuntu-latest
-    env:
-      platform: Azure
-      region: central
-      profile_path: profile/
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Display custom environment variables
-        if: ${{ env.platform == 'Azure' }}
-        run: |
-          echo "Platform is ${{ env.platform }}"
-          echo "The region is $region"
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      
+      - uses: actions/checkout@v2
 
-      - name: Display custom env vars
-        run: |
-          echo "Github Actor: $GITHUB_ACTOR"
-          echo "Github Ref: $GITHUB_REF"
+      - name: List all ORIGINAL files
+        run: ls
+
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'  # Set the Python version you want to use
+
+      - name: Run Python Script
+        run: python create_file.py
+
+      - name: List all NEW files
+        run: ls
+      
         
