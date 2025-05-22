@@ -34,4 +34,13 @@ jobs:
       - name: List all NEW files
         run: ls
       
+  display:
+    # Runs on the latest version of Ubuntu
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      
+      - name: print a value
+        run: echo Hello from another job
         
